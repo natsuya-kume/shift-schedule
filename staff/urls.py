@@ -1,6 +1,6 @@
 from django.urls import path, include
-from .views import hello
+from .views import StaffCreate
 
 urlpatterns = [
-    path('hello/', hello, name = "hello"),
+    path('create/', StaffCreate.as_view(), name = "staffcreate"),
 ]

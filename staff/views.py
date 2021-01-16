@@ -1,7 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .form import CreateUserForm
+from .models import Staff
+from django.views.generic import CreateView
 
-def hello(request):
-    return HttpResponse("Hello ようこそ")
 
-# Create your views here.
+class StaffCreate(CreateView):
+    template_name = "staff/create.html"
+    model = Staff
+    fields = ("id", "name", "password", "roll", "nyushabi", "taishabi", "hyoujijyun", "jikyu", "delete")
+    ##success_url = reverse_lazy("list")

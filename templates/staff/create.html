@@ -1,0 +1,7 @@
+{%extends 'base.html'%} {%block title%} {% endblock title %} {% block header %}
+スタッフ登録 {%endblock header%} {% block content %}
+<from action="" method="POST"
+  >{% csrf_token %} {{ form.as_p }}
+  <input type="submit" value="登録" />
+</from>
+{% endblock content %}
