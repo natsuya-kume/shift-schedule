@@ -9,3 +9,5 @@ class Shisetsu(models.Model):
     tel = models.CharField(verbose_name='電話番号', max_length=20,null=True,blank=True) 
     fax = models.CharField(verbose_name='FAX番号', max_length=20,null=True,blank=True) 
     color = ColorField(verbose_name='表示色', default='#FF0000')
+    def __str__(self):
+        return self.name
