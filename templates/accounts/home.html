@@ -1,0 +1,33 @@
+{% extends 'accounts/base.html' %} {% load static %} {% block customcss %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+{% endblock customcss %} {% block header %}
+<title>ホーム画面</title>
+{% endblock header %} {% block content %}
+<body>
+  {% if user.is_authenticated %} Hi {{ user.username }}!
+  <h2>{{ user.get_full_name }}</h2>
+  <ol>
+    {% for person in staffs %}
+    <ul>
+      <li>名前: {{ person.name }}</li>
+      <li>役職: {{ person.roll }}</li>
+      <li>入社日: {{ person.nyushabi}}</li>
+      <li>退社日: {{ person.taishabi }}</li>
+      <li>表示順: {{ person.hyoujijyun }}</li>
+      <li>時給: {{ person.jikyu }}</li>
+      <li>削除フラグ: {{ person.delete }}</li>
+      <li>登録日時: {{ person.create_date }}</li>
+      <li>登録ユーザー: {{ person.create_user }}</li>
+      <li>更新日時: {{ person.update_date }}</li>
+      <li>更新ユーザー: {{ person.update_user }}</li>
+    </ul>
+    {% endfor %}
+  </ol>
+
+  <p><a href="{% url 'accounts:logout' %}">logout</a></p>
+  {% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'accounts:login' %}">login</a>
+  {% endif %}
+</body>
+{% endblock content %}
